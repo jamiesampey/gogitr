@@ -6,7 +6,14 @@ import (
 	"sort"
 )
 
-func PrintSqrtMap() {
+func RunSqrtMap() {
+	var predicate = func(k int) bool {
+		return k >= 5 && k%2 == 1
+	}
+	PrintSqrtMap(predicate)
+}
+
+func PrintSqrtMap(printFilter func(int) bool) {
 	fmt.Print("Enter an integer: ")
 	var num int
 	_, err := fmt.Scanln(&num)
@@ -22,8 +29,10 @@ func PrintSqrtMap() {
 	}
 	sort.Ints(keysAsc)
 
-	for k := range keysAsc {
-		fmt.Printf("%d->%d\n", k, squares[k])
+	for _, k := range keysAsc {
+		if printFilter(k) {
+			fmt.Printf("%d->%d\n", k, squares[k])
+		}
 	}
 }
 
