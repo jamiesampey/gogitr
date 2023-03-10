@@ -13,6 +13,9 @@ func TestIsPalidrome(t *testing.T) {
 		{"I did, did I", true},
 		{"Eva, can I see bees in a cave", true},
 		{"Eva, can I sea bees in a cave", false},
+		{"abceba", false},
+		{"Never !odd or-even.!?", true},
+		{"Sir, I demand, I 123333556 am a maid named Iris", true},
 	}
 
 	for _, test := range tests {
