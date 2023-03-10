@@ -3,6 +3,7 @@ package sqrtMap
 import (
 	"fmt"
 	"log"
+	"sort"
 )
 
 func PrintSqrtMap() {
@@ -12,10 +13,18 @@ func PrintSqrtMap() {
 	if err != nil {
 		log.Fatalf("Error occurred: %s", err)
 	}
-	for k, v := range SqrtMap(num) {
-		fmt.Printf("%d->%v\n", k, v)
-	}
 
+	var squares = SqrtMap(num)
+
+	var keysAsc []int
+	for k := range squares {
+		keysAsc = append(keysAsc, k)
+	}
+	sort.Ints(keysAsc)
+
+	for k := range keysAsc {
+		fmt.Printf("%d->%d\n", k, squares[k])
+	}
 }
 
 func SqrtMap(num int) map[int]int {
