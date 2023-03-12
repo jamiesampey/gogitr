@@ -1,7 +1,9 @@
 package main
 
-import "jamiesampey.com/gogitr/sqrtMap"
+import (
+	"jamiesampey.com/gogitr/wordScramble"
+)
 
 func main() {
-	sqrtMap.RunSqrtMap()
+	wordScramble.ScrambleWords("mary 	had a   little      lamb")
 }
