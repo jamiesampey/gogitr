@@ -6,15 +6,9 @@ import (
 	"strings"
 )
 
-func ScrambleWords(sentence string) {
-	var words []string
-	for _, word := range strings.Split(sentence, " ") {
-		if trimmedWord := strings.TrimSpace(word); len(trimmedWord) > 0 {
-			words = append(words, trimmedWord)
-		}
-	}
-
-	fmt.Printf("Scrambling %v ...\n", words)
+func ScrambleWords(sentence string) []string {
+	words := TrimSentence(sentence)
+	fmt.Printf("\nScrambling %v ...\n", words)
 
 	var rndWords []string
 	wordsLeft := len(words)
@@ -25,7 +19,19 @@ func ScrambleWords(sentence string) {
 		words, wordsLeft = removeIndex(words, rnd)
 	}
 
-	fmt.Printf("Scrambled %v", rndWords)
+	fmt.Printf("Scrambled %v\n", rndWords)
+	return rndWords
+}
+
+func TrimSentence(rawSentence string) []string {
+	var trimmedWords []string
+	for _, word := range strings.Split(rawSentence, " ") {
+		if trimmedWord := strings.TrimSpace(word); len(trimmedWord) > 0 {
+			trimmedWords = append(trimmedWords, trimmedWord)
+		}
+	}
+
+	return trimmedWords
 }
 
 func removeIndex(words []string, i int) ([]string, int) {
