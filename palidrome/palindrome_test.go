@@ -7,6 +7,9 @@ func TestIsPalidrome(t *testing.T) {
 		str      string
 		expected bool
 	}{
+		{"a", true},
+		{"ab1a", true},
+		{"abc", false},
 		{"madam", true},
 		{"nurses run", true},
 		{"jamie", false},
@@ -22,5 +25,6 @@ func TestIsPalidrome(t *testing.T) {
 		if IsPalidrome(test.str) != test.expected {
 			t.Errorf("IsPalindrome('%s') returned %t", test.str, !test.expected)
 		}
+
 	}
 }
