@@ -7,6 +7,7 @@ func TestScrambledLen(t *testing.T) {
 		"I'm gonna live    forever, I'm gonna cross      that river",
 		"may the wind take your   troubles away",
 		"I've got a \tpeaceful easy feeling",
+		"the dog days are over! The dog days are done",
 		"mary 	had a   little      lamb",
 	}
 
