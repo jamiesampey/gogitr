@@ -1,9 +1,11 @@
 package main
 
 import (
-	"jamiesampey.com/gogitr/wordScramble"
+	"jamiesampey.com/gogitr/bst"
 )
 
 func main() {
-	wordScramble.ScrambleWords("mary 	had a   little      lamb")
+	tree := bst.BST{}
+	tree.PopulateTree(50)
+	tree.PrintSortedTree()
 }
