@@ -6,6 +6,6 @@ import (
 
 func main() {
 	tree := bst.BST{}
-	tree.PopulateTree(50)
+	tree.PopulateTree(10)
 	tree.PrintSortedTree()
 }
