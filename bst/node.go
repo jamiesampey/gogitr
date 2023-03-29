@@ -97,6 +97,8 @@ func (node *Node) rebalance() *Node {
 // The orig parent node SHIFTS DOWN AND LEFT to become the new parent's left node
 // The orig right child's left must move over to the new left child's right
 func (node *Node) shiftLeft() *Node {
+	fmt.Printf("Shift: %d[%d,%d] does down and left\n", node.value, node.Balance(), node.height)
+
 	origRight := node.right
 	node.right = origRight.left
 	origRight.left = node
@@ -111,6 +113,8 @@ func (node *Node) shiftLeft() *Node {
 // The orig parent node shifts DOWN and RIGHT to become the new parent's right node
 // The orig left child's right must move over to the new right child's left
 func (node *Node) shiftRight() *Node {
+	fmt.Printf("Shift: %d[%d,%d] does down and right\n", node.value, node.Balance(), node.height)
+
 	origLeft := node.left
 	node.left = origLeft.right
 	origLeft.right = node

@@ -14,11 +14,10 @@ func (bst *BST) PopulateTree(numNodes int) {
 	var err error
 	for nodeCount < numNodes {
 		value := rand.Intn(100)
+		fmt.Printf("\nInsert #%d: %d\n", nodeCount, value)
 		bst.root, err = bst.root.Insert(value)
 		if err == nil {
 			nodeCount++
-			fmt.Println()
-			fmt.Printf("Insert #%d: %d, Tree:\n", nodeCount, value)
 			bst.root.Print(0, -1)
 		} else {
 			fmt.Println(err)
