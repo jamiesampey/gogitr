@@ -25,6 +25,6 @@ func PrintFactorial(num int) {
 	if err != nil {
 		fmt.Printf("Received error: %s", err)
 	} else {
-		fmt.Printf("%d! = %d", num, factorial)
+		fmt.Printf("%d! = %d\n", num, factorial)
 	}
 }
