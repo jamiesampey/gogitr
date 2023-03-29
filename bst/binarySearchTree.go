@@ -2,7 +2,6 @@ package bst
 
 import (
 	"fmt"
-	"log"
 	"math/rand"
 )
 
@@ -11,15 +10,16 @@ type BST struct {
 }
 
 func (bst *BST) PopulateTree(numNodes int) {
-	numInserted := 0
+	nodeCount := 0
 	var err error
-	for numInserted < numNodes {
-		num := rand.Intn(100)
-		bst.root, err = bst.root.Insert(num)
+	for nodeCount < numNodes {
+		value := rand.Intn(100)
+		bst.root, err = bst.root.Insert(value)
 		if err == nil {
-			numInserted++
-			log.Printf("Inserted %d | Tree height %d | Tree balance %d",
-				num, bst.root.height, bst.root.Balance())
+			nodeCount++
+			fmt.Println()
+			fmt.Printf("Insert #%d: %d, Tree:\n", nodeCount, value)
+			bst.root.Print(0, -1)
 		} else {
 			fmt.Println(err)
 		}
@@ -27,6 +27,7 @@ func (bst *BST) PopulateTree(numNodes int) {
 }
 
 func (bst *BST) PrintSortedTree() {
+	fmt.Print("\nRecursive Tree Sort: ")
 	bst.printSubTree(bst.root)
 	fmt.Println()
 }
@@ -41,17 +42,4 @@ func (bst *BST) printSubTree(n *Node) {
 	if n.right != nil {
 		bst.printSubTree(n.right)
 	}
-}
-
-func logInsertOp(newValue, lastValue int) {
-	if newValue == lastValue {
-
-		return
-	}
-
-	pos := "LEFT"
-	if newValue > lastValue {
-		pos = "RIGHT"
-	}
-	log.Printf("Inserting %d %s of %d", newValue, pos, lastValue)
 }

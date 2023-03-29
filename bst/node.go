@@ -2,6 +2,7 @@ package bst
 
 import (
 	"fmt"
+	"strings"
 )
 
 type Node struct {
@@ -40,6 +41,27 @@ func (node *Node) Balance() int {
 		return 0
 	}
 	return node.rightHeight() - node.leftHeight()
+}
+
+func (node *Node) Print(i, parentValue int) {
+	if node == nil {
+		return
+	}
+
+	var position string
+	if parentValue >= 0 {
+		if node.value < parentValue {
+			position = fmt.Sprintf("left of %d", parentValue)
+		} else {
+			position = fmt.Sprintf("right of %d", parentValue)
+		}
+	}
+
+	fmt.Printf("%s%d[%d,%d] %s\n", strings.Repeat(" ", i*4), node.value,
+		node.Balance(), node.height, position)
+
+	node.left.Print(i+1, node.value)
+	node.right.Print(i+1, node.value)
 }
 
 func (node *Node) rebalance() *Node {
