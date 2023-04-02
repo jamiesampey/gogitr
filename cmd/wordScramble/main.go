@@ -1,7 +1,7 @@
 package main
 
 import (
-	"jamiesampey.com/gogitr/wordScramble"
+	"jamiesampey.com/gogitr/pkg/wordScramble"
 )
 
 func main() {

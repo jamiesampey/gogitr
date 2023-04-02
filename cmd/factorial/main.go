@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"jamiesampey.com/gogitr/factorial"
+	"jamiesampey.com/gogitr/pkg/factorial"
 	"log"
 	"strconv"
 )

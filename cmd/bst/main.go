@@ -1,7 +1,7 @@
 package main
 
 import (
-	"jamiesampey.com/gogitr/bst"
+	"jamiesampey.com/gogitr/pkg/bst"
 )
 
 func main() {
