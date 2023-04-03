@@ -2,17 +2,21 @@ package generics
 
 import "fmt"
 
-type Stack []any
+type Printable interface {
+	String() string
+}
+
+type Stack []Printable
 
 func (s *Stack) isEmpty() bool {
 	return len(*s) == 0
 }
 
-func (s *Stack) Push(v any) {
+func (s *Stack) Push(v Printable) {
 	*s = append(*s, v)
 }
 
-func (s *Stack) Pop() (any, error) {
+func (s *Stack) Pop() (Printable, error) {
 	if s.isEmpty() {
 		return nil, fmt.Errorf("cannot pop, stack is empty")
 	}

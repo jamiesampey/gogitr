@@ -6,21 +6,15 @@ import (
 	"log"
 )
 
-type skiTour struct {
-	miles  float32
-	vertFt int
-	state  string
-}
-
 func main() {
 	tourStack := new(generics.Stack)
-	tourStack.Push(skiTour{miles: 5.4, vertFt: 3000, state: "MT"})
-	tourStack.Push(skiTour{miles: 7.2, vertFt: 3500, state: "CO"})
-	tourStack.Push(skiTour{miles: 9.8, vertFt: 4000, state: "WY"})
+	tourStack.Push(generics.SkiTour{Miles: 5.4, VertFt: 3000, State: "MT"})
+	tourStack.Push(generics.SkiTour{Miles: 7.2, VertFt: 3500, State: "CO"})
+	tourStack.Push(generics.SkiTour{Miles: 9.8, VertFt: 4000, State: "WY"})
 
 	popped, err := tourStack.Pop()
 	if err != nil {
 		log.Fatal("Received error on pop")
 	}
-	fmt.Printf("popped tour is %v", popped)
+	fmt.Printf("popped tour is %s", popped.String())
 }
