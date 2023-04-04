@@ -2,27 +2,26 @@ package generics
 
 import "fmt"
 
-type Printable interface {
-	String() string
+type Stack[T any] struct {
+	data []T
 }
 
-type Stack []Printable
-
-func (s *Stack) isEmpty() bool {
-	return len(*s) == 0
+func (s *Stack[T]) isEmpty() bool {
+	return len(s.data) == 0
 }
 
-func (s *Stack) Push(v Printable) {
-	*s = append(*s, v)
+func (s *Stack[T]) Push(v T) {
+	s.data = append(s.data, v)
 }
 
-func (s *Stack) Pop() (Printable, error) {
+func (s *Stack[T]) Pop() (T, error) {
 	if s.isEmpty() {
-		return nil, fmt.Errorf("cannot pop, stack is empty")
+		var zeroValue T
+		return zeroValue, fmt.Errorf("cannot pop, stack is empty")
 	}
 
-	lastIdx := len(*s) - 1
-	last := (*s)[lastIdx]
-	(*s) = (*s)[:lastIdx]
+	lastIdx := len(s.data) - 1
+	last := s.data[lastIdx]
+	s.data = s.data[:lastIdx]
 	return last, nil
 }

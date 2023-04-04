@@ -3,18 +3,19 @@ package main
 import (
 	"fmt"
 	"jamiesampey.com/gogitr/pkg/generics"
+	"jamiesampey.com/gogitr/pkg/generics/ski"
 	"log"
 )
 
 func main() {
-	tourStack := new(generics.Stack)
-	tourStack.Push(generics.SkiTour{Miles: 5.4, VertFt: 3000, State: "MT"})
-	tourStack.Push(generics.SkiTour{Miles: 7.2, VertFt: 3500, State: "CO"})
-	tourStack.Push(generics.SkiTour{Miles: 9.8, VertFt: 4000, State: "WY"})
+	tourStack := new(generics.Stack[ski.Ski])
+	tourStack.Push(ski.New("DPS", "Pagoda Tour", 179, 106, 19.0))
+	tourStack.Push(ski.New("Blizzard", "Rustler 11", 180, 112, 19.1))
+	tourStack.Push(ski.New("Salomon", "QST Stella", 173, 106, 16.2))
 
-	popped, err := tourStack.Pop()
+	item, err := tourStack.Pop()
 	if err != nil {
 		log.Fatal("Received error on pop")
 	}
-	fmt.Printf("popped tour is %s", popped.String())
+	fmt.Printf("Popped item is %s", item.String())
 }
