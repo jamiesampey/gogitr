@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func PointersAndTypes() {
+func BasicPointerTypes() {
 	data := "foobar"
 
 	var ptr *string
