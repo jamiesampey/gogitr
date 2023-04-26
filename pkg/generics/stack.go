@@ -23,5 +23,17 @@ func (s *Stack[T]) Pop() (T, error) {
 	lastIdx := len(s.data) - 1
 	last := s.data[lastIdx]
 	s.data = s.data[:lastIdx]
+
 	return last, nil
+}
+
+func (s *Stack[T]) PopAll() {
+	for {
+		if item, err := s.Pop(); err == nil {
+			fmt.Printf("Popped item is %s, stack size is %d\n", item, len(s.data))
+		} else {
+			fmt.Printf("Error is \"%s\"\n", err)
+			break
+		}
+	}
 }
