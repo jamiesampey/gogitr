@@ -1,5 +1,10 @@
 package leetCode
 
+/*
+Given a string s, find the length of the longest substring without
+repeating characters.
+*/
+
 func LongestSubstringWithNoRepeatChars(s string) int {
 	m := make(map[rune]int)
 	current, longest := 0, 0
